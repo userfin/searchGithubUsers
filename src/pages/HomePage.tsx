@@ -7,7 +7,7 @@ import { useDebounce } from "../hooks/debounce";
 import { RepoCard } from "../components/RepoCard";
 
 export function HomePage() {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const [dropdown, setDropdown] = useState(false);
   const debounced = useDebounce(search);
   const { isLoading, isError, data } = useSearchUsersQuery(debounced, {
@@ -24,6 +24,7 @@ export function HomePage() {
 
   const clickHandler = (username: string) => {
     fetchRepos(username);
+    setDropdown(false);
   };
 
   return (
